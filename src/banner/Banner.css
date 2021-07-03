@@ -1,0 +1,15 @@
+.carousel-inner {
+  max-height: 400px;
+}
+
+.carousel-caption {
+  position: relative;
+  top: 30%;
+  transform: translateY(50%);
+  transform: translateX(-15%);
+}
+
+.carousel-desc-text {
+  font-size: calc(0.9vw + 10px);
+  text-align: center;
+}

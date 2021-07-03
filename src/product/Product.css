@@ -1,0 +1,18 @@
+.product-container {
+  margin-top: 1.5rem;
+}
+.icon-card {
+  font-size: 2rem !important ;
+  color: #d93425;
+  float: right !important;
+}
+
+.product-image {
+  height: 160px;
+  border-radius: 5px;
+}
+.product-details {
+  color: #c55d17;
+  font-weight: 500;
+  text-align: end;
+}
