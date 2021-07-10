@@ -8,3 +8,6 @@ fieldset {
   box-shadow: 0 0 10px grey !important;
   padding-top: 10px !important;
 }
+button:hover {
+  opacity: 0.5;
+}
