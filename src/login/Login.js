@@ -2,21 +2,19 @@ import React from "react";
 import { Formik, Field, Form } from "formik";
 import * as Yup from "yup";
 import { toast, ToastContainer } from "react-toastify";
+import { Container } from "react-bootstrap";
 
-const LoginForm = (props) => {
-  <Form>
-    <label htmlFor="firstName">First Name</label>
-    <Field name="firstName" type="text" />
-
-    <label htmlFor="lastName">Last Name</label>
-    <Field name="lastName" type="text" />
-
-    <label htmlFor="email">Email Address</label>
-    <Field name="email" type="email" />
-
-    <button type="submit">Submit</button>
-  </Form>;
-};
+const LoginForm = (props) => (
+  <Container>
+    <Form>
+      <label htmlFor="username">Usere Name</label>
+      <Field name="username" type="text" />
+      <label htmlFor="password">Password</label>
+      <Field name="password" type="password" />
+      <button type="submit">Submit</button>
+    </Form>
+  </Container>
+);
 
 const Login = () => {
   return (
@@ -49,9 +47,8 @@ const Login = () => {
           actions.resetForm();
           actions.setSubmitting(false);
         }}
-      >
         component={LoginForm}
-      </Formik>
+      ></Formik>
     </div>
   );
 };
