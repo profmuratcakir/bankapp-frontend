@@ -7,7 +7,7 @@ import logo from "../images/logo.png";
 const Footer = () => {
   return (
     <footer className="footer">
-      <Col sm={12} md={6} lg={4} className="footer-left">
+      <Col sm={6} md={4} className="footer-left">
         <Row>
           <p className="about">
             <span> BANK OF ANATOLIA</span> Ut congue augue non tellus bibendum,
@@ -38,7 +38,23 @@ const Footer = () => {
           </Link>
         </Row>
       </Col>
-      <Col sm={12} md={6} lg={4} className="footer-center"></Col>
+
+      <Col sm={6} md={4} className="footer-center">
+        <div>
+          <i className="fa fa-map-marker"></i>
+          <p>
+            <span>Stret name and number</span> City, Country
+          </p>
+        </div>
+        <div>
+          <i className="fa fa-phone"></i>
+          <p> (+00) 0000 000 000</p>
+        </div>
+        <div>
+          <i className="fa fa-envelope"></i>
+          <p> email@bankofanatoli.com</p>
+        </div>
+      </Col>
 
       <Col sm={12} md={6} lg={4} className="footer-right"></Col>
     </footer>
