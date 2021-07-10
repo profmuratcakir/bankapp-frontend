@@ -14,6 +14,7 @@ import price1 from "../images/price/money.jpeg";
 import price2 from "../images/price/graph.jpeg";
 import price3 from "../images/price/finance.jpeg";
 
+// Price verileri
 const priceData = [
   {
     title: "Basic",
