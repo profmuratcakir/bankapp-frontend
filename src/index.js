@@ -6,7 +6,7 @@ import reportWebVitals from "./reportWebVitals";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "semantic-ui-css/semantic.min.css";
 import "font-awesome/css/font-awesome.min.css";
-
+import "react-toastify/dist/ReactToastify.css";
 ReactDOM.render(
   <React.StrictMode>
     <App />

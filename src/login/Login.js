@@ -3,8 +3,10 @@ import { Formik, Field, Form } from "formik";
 import * as Yup from "yup";
 import { toast, ToastContainer } from "react-toastify";
 import { Container, Row, Col } from "react-bootstrap";
-import { Button } from "@material-ui/core";
+import { Button, LinearProgress } from "@material-ui/core";
 import { TextField } from "formik-material-ui";
+import "react-toastify/dist/ReactToastify.css";
+
 import "./Login.css";
 
 const LoginForm = (props) => (
@@ -13,18 +15,29 @@ const LoginForm = (props) => (
       <legend>Login</legend>
       <Form>
         <Row className="justify-content-center">
-          <Col xs={12} md={6} className="text-center">
-            <label htmlFor="username">Usere Name</label>
-            <Field component={TextField} name="username" type="text" />
+          <Col xs={12} md={6} className="text-center p-3">
+            <label htmlFor="username">User Name:</label>
+            <Field
+              className="ms-4"
+              component={TextField}
+              name="username"
+              type="text"
+            />
           </Col>
 
-          <Col xs={12} md={6} className="text-center">
-            <label htmlFor="password">Password</label>
-            <Field component={TextField} name="password" type="password" />
+          <Col xs={12} md={6} className="text-center p-3">
+            <label htmlFor="password">Password:</label>
+            <Field
+              className="ms-4"
+              component={TextField}
+              name="password"
+              type="password"
+            />
+            {props.isSubmitting && <LinearProgress />}
           </Col>
         </Row>
         <Row className="mt-4 ">
-          <Col className="d-flex justify-content-center">
+          <Col className="d-flex justify-content-center p-3">
             <Button
               type="submit"
               onClick={props.submitForm}
@@ -53,7 +66,7 @@ const Login = () => {
           password: Yup.string()
             .max(20, "Must be 20 characters or less")
             .min(8, "Must be at least 8 character")
-            .required("Required"),
+            .required("Password Required"),
         })}
         onSubmit={(values, actions) => {
           // servis.login(values).then((res) => {
@@ -74,6 +87,7 @@ const Login = () => {
         }}
         component={LoginForm}
       ></Formik>
+      <ToastContainer />
     </div>
   );
 };
