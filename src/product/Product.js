@@ -8,13 +8,10 @@ import {
   Row,
 } from "react-bootstrap";
 import { Icon } from "semantic-ui-react";
-
 import Gold01 from "../images/card/Gold01.jpeg";
 import Platinum01 from "../images/card/Platinum01.jpeg";
 import Silver01 from "../images/card/Silver01.jpeg";
-
 import "./Product.css";
-
 const cardData = [
   {
     title: "Gold Cards",
@@ -43,14 +40,12 @@ const cardData = [
       "For a limited time, earn a $150 bonus after making $500 in eligible purchases within the first 90 days of account opening. Enjoy a 0% intro APR9 on balance transfers for the first 12 billing cycles. After that the APR is variable, currently 13.99%–23.99%.",
   },
 ];
-
 const Product = () => {
   return (
     <Container className="product-container">
       <Row>
-        <p className="h2 text-center">Anatolia Cards</p>
+        <p className="h2 fw-bold text-center my-xs-1 my-md-1">Anatolia Cards</p>
       </Row>
-
       <Row className="d-flex justify-content-center ">
         {cardData.map((item) => {
           const { cards, image, title, description } = item;
@@ -59,21 +54,24 @@ const Product = () => {
               xs={12}
               md={6}
               lg={4}
-              className="d-flex justify-content-center"
+              className="d-flex justify-content-center  rounded p-3"
             >
-              <Card style={{ width: "22rem", marginBottom: "25px" }}>
-                <Card.Title>{title}</Card.Title>
+              <Card
+                className="card-stil"
+                style={{ width: "22rem", marginBottom: "10px" }}
+              >
+                <Card.Title className="fw-bolder p-3">{title}</Card.Title>
                 <Card.Img src={image} className="product-image" />
                 <ListGroup className="list-group-flush">
                   {cards.map((card) => {
                     return (
-                      <ListGroupItem className="py-1">
+                      <ListGroupItem className="py-1 card-properies-list">
                         <Card.Link href="#" className="product-card-link">
-                          <p>
-                            {card}
+                          <p className="table-parent ">
+                            <h5 className="table-child">{card}</h5>
                             <Icon
                               name="angle right"
-                              className="icon-card"
+                              className="icon-card d-flex align-items-center"
                             ></Icon>
                           </p>
                         </Card.Link>
@@ -81,7 +79,6 @@ const Product = () => {
                     );
                   })}
                 </ListGroup>
-
                 <Card.Body>
                   <Card.Text>{description}</Card.Text>
                   <Card.Link href="#" className="product-details">
@@ -96,5 +93,4 @@ const Product = () => {
     </Container>
   );
 };
-
 export default Product;
