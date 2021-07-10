@@ -1,0 +1,10 @@
+fieldset {
+  width: 80vw;
+  max-width: 600px;
+  margin: 20px !important;
+  padding: 0 10px 10px !important;
+  border: 1px solid !important;
+  border-radius: 10px !important;
+  box-shadow: 0 0 10px grey !important;
+  padding-top: 10px !important;
+}
