@@ -1,6 +1,22 @@
 import React from "react";
-import { Formik } from "formik";
+import { Formik, Field, Form } from "formik";
 import * as Yup from "yup";
+import { toast, ToastContainer } from "react-toastify";
+
+const LoginForm = (props) => {
+  <Form>
+    <label htmlFor="firstName">First Name</label>
+    <Field name="firstName" type="text" />
+
+    <label htmlFor="lastName">Last Name</label>
+    <Field name="lastName" type="text" />
+
+    <label htmlFor="email">Email Address</label>
+    <Field name="email" type="email" />
+
+    <button type="submit">Submit</button>
+  </Form>;
+};
 
 const Login = () => {
   return (
@@ -17,18 +33,25 @@ const Login = () => {
             .required("Required"),
         })}
         onSubmit={(values, actions) => {
-          servis.login(values).then((res) => {
-            if (res.status === 200) {
-              const userInfo = res.data;
-            }
+          // servis.login(values).then((res) => {
+          //   if (res.status === 200) {
+          //     const userInfo = res.data;
+          //   }
+          // });
+          // if (userInfo && idAdmin) {
+          //   history.push("/admin");
+          // } else {
+          //   history.push("/user");
+          // }
+          toast.success("Login Successful", {
+            position: toast.POSITION.TOP_CENTER,
           });
-          if (userInfo && idAdmin) {
-            history.push("/admin");
-          } else {
-            history.push("/user");
-          }
+          actions.resetForm();
+          actions.setSubmitting(false);
         }}
-      ></Formik>
+      >
+        component={LoginForm}
+      </Formik>
     </div>
   );
 };
