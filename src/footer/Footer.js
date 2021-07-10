@@ -56,7 +56,17 @@ const Footer = () => {
         </div>
       </Col>
 
-      <Col sm={12} md={6} lg={4} className="footer-right"></Col>
+      <Col sm={6} md={4} className="footer-right">
+        <img src={logo} alt="logo" style={{ height: "100px" }} />
+
+        <p className="menu">
+          <Link to="/">Home</Link> | <Link to="/about">About</Link> |
+          <Link to="/about">Package</Link> | <Link to="/about">Location</Link> |
+          <Link to="/about">Contact</Link>
+        </p>
+
+        <p className="name"> Bank of Anatolia &copy; 2021</p>
+      </Col>
     </footer>
   );
 };
