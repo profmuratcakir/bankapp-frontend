@@ -21,7 +21,7 @@ const RegisterSchema = Yup.object().shape({
 });
 
 const RegistrationForm = (props) => (
- <Container className="d-flex justify-content-center">
+  <Container className="d-flex justify-content-center">
     <fieldset>
       <legend>Register</legend>
       <Form>
@@ -132,10 +132,6 @@ const RegistrationForm = (props) => (
   </Container>
 );
 
-
-
-)
-
 const Register = () => {
   return (
     <div>
@@ -152,22 +148,23 @@ const Register = () => {
         }}
         validationSchema={RegisterSchema}
         onSubmit={(values, actions) => {
-          servis.register(values).then((res) => {
-            if (res.status === 200) {
-              toast.success("Register Successful", {
-                position: toast.POSITION.TOP_CENTER,
-              });
-              actions.resetForm();
-            } else {
-              toast.error(res.data.message, {
-                position: toast.POSITION.TOP_CENTER,
-              });
-            }
-            actions.setSubmitting(false);
-          });
+          // servis.register(values).then((res) => {
+          //   if (res.status === 200) {
+          //     toast.success("Register Successful", {
+          //       position: toast.POSITION.TOP_CENTER,
+          //     });
+          //     actions.resetForm();
+          //   } else {
+          //     toast.error(res.data.message, {
+          //       position: toast.POSITION.TOP_CENTER,
+          //     });
+          //   }
+          actions.setSubmitting(false);
+          // });
         }}
         component={RegistrationForm}
       ></Formik>
+      <ToastContainer />
     </div>
   );
 };
