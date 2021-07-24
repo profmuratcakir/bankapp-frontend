@@ -75,7 +75,7 @@ const TopNav = () => {
 const MiddleNav = () => {
   return (
     <div>
-      <Nav clasName="d-flex justify-content-end">
+      <Nav className="d-flex justify-content-end">
         <Nav.Item className="me-4">
           <Nav.Link bsPrefix="middle-navbar">
             <Link to="/login">
