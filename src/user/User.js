@@ -36,37 +36,42 @@ const User = () => {
   const [{ userInfo }] = useStateValue();
   const history = useHistory();
 
-  const transactions = userInfo.user.transactions;
-
   console.log(userInfo);
+
   let totalDeposits = 0;
   let totalWithdraw = 0;
   let depositArray = [];
   let withdrawArray = [];
 
+  const transactions = userInfo.user.transactions;
+  // Getting Unique transaction date
+  const uniqDates = _.uniq(_.map(transactions, "date")).sort();
+
+  //For the cards
   let totalRecipients = 0;
   if (userInfo?.user?.recipients?.length > 0) {
     totalRecipients = userInfo.user.recipients.length;
   }
 
-  const uniqDates = _.uniq(_.map(transactions, "date")).sort();
+  console.log(userInfo);
 
+  // Extracting Deposit, Withdraw and calculating sum of them
   uniqDates.forEach((date) => {
     const deposits = transactions.filter((tran) => {
       return tran.type === "DEPOSIT" && tran.date === date;
     });
 
+    depositArray = deposits.map((item) => item.amount);
+    totalDeposits = depositArray.reduce((init, sum) => init + sum, 0);
+
     const withdraws = transactions.filter((tran) => {
       return tran.type === "WITHDRAW" && tran.date === date;
     });
-    console.log(withdraws);
 
-    depositArray = deposits.map((item) => item.amount);
     withdrawArray = withdraws.map((item) => item.amount);
-    totalDeposits = depositArray.reduce((init, sum) => init + sum, 0);
     totalWithdraw = withdrawArray.reduce((init, sum) => init + sum, 0);
-    // console.log(totalDeposits);
-    console.log(totalWithdraw);
+    console.log(depositArray);
+    console.log(withdrawArray);
   });
 
   // function calculate(type) {
