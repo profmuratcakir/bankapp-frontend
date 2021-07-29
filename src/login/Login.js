@@ -95,10 +95,9 @@ const Login = () => {
                 history.push("/user");
               }
               actions.resetForm();
+              actions.setSubmitting(false);
             }
           });
-
-          actions.setSubmitting(false);
         }}
         component={LoginForm}
       ></Formik>

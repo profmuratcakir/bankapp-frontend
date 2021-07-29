@@ -14,6 +14,7 @@ import Silver01 from "../images/card/Silver01.jpeg";
 import "./Product.css";
 const cardData = [
   {
+    id: 1,
     title: "Gold Cards",
     image: Gold01,
     cards: [
@@ -26,6 +27,7 @@ const cardData = [
       "Enjoy a 0% Intro APR on purchases and balance transfers for the first 12 billing cycles. After that, a variable APR applies $95/year there after.",
   },
   {
+    id: 2,
     title: "Platinum Cards",
     image: Platinum01,
     cards: ["Cash+ Card", "Shop & Fly Card"],
@@ -33,6 +35,7 @@ const cardData = [
       "For a limited time, earn a $150 bonus after making $500 in eligible purchases within the first 90 days of account opening.Enjoy a 0% intro APR9 on balance transfers for the first 12 billing cycles. After that the APR is variable, currently 13.99%–23.99%.",
   },
   {
+    id: 3,
     title: "Silver Cards",
     image: Silver01,
     cards: ["Anatolia Travel Card", "Student Cash Back Credit Card"],
@@ -48,9 +51,10 @@ const Product = () => {
       </Row>
       <Row className="d-flex justify-content-center ">
         {cardData.map((item) => {
-          const { cards, image, title, description } = item;
+          const { id, cards, image, title, description } = item;
           return (
             <Col
+              key={id}
               xs={12}
               md={6}
               lg={4}
@@ -65,15 +69,18 @@ const Product = () => {
                 <ListGroup className="list-group-flush">
                   {cards.map((card) => {
                     return (
-                      <ListGroupItem className="py-1 card-properies-list">
+                      <ListGroupItem
+                        key={card}
+                        className="py-1 card-properies-list"
+                      >
                         <Card.Link href="#" className="product-card-link">
-                          <p className="table-parent ">
+                          <div className="table-parent ">
                             <h5 className="table-child">{card}</h5>
                             <Icon
                               name="angle right"
                               className="icon-card d-flex align-items-center"
                             ></Icon>
-                          </p>
+                          </div>
                         </Card.Link>
                       </ListGroupItem>
                     );

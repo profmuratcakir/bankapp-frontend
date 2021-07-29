@@ -17,6 +17,7 @@ import price3 from "../images/price/finance.jpeg";
 // Price verileri
 const priceData = [
   {
+    id: 1,
     title: "Basic",
     subtitle: "For everybody ",
     image: price1,
@@ -29,6 +30,7 @@ const priceData = [
     ],
   },
   {
+    id: 2,
     title: "Premium",
     subtitle: "Most Populer",
     image: price2,
@@ -41,6 +43,7 @@ const priceData = [
     ],
   },
   {
+    id: 3,
     title: "Advance",
     subtitle: "Most interprising",
     image: price3,
@@ -66,9 +69,10 @@ const Price = () => {
       </Row>
       <Row className="d-flex justify-content-center ">
         {priceData.map((item) => {
-          const { title, subtitle, image, monthlyPrice, packages } = item;
+          const { id, title, subtitle, image, monthlyPrice, packages } = item;
           return (
             <Col
+              key={id}
               xs={12}
               md={6}
               lg={4}
@@ -89,11 +93,14 @@ const Price = () => {
                 <ListGroup className="list-group-flush">
                   {packages.map((Package) => {
                     return (
-                      <ListGroupItem className="py-1 card-properies-list d-flex justify-content-center">
+                      <ListGroupItem
+                        key={Package}
+                        className="py-1 card-properies-list d-flex justify-content-center"
+                      >
                         <Card.Link href="#" className="product-card-link">
-                          <p className="table-parent ">
+                          <div className="table-parent ">
                             <h5 className="table-child">{Package}</h5>
-                          </p>
+                          </div>
                         </Card.Link>
                       </ListGroupItem>
                     );
@@ -101,12 +108,12 @@ const Price = () => {
                 </ListGroup>
                 <Card.Body className="bg-booknow">
                   <Card.Link className="product-details d-flex align-items-center justify-content-center text-light fw-bold ">
-                    <p className="d-flex  justify-content-start align-items-center">
+                    <div className="d-flex  justify-content-start align-items-center">
                       <Icon name="save" className="icon-card icon-save "></Icon>
                       <span className="px-1 fw-bold text-center text-dark">
                         <h3>BOOK NOW</h3>
                       </span>
-                    </p>
+                    </div>
                   </Card.Link>
                 </Card.Body>
               </Card>
