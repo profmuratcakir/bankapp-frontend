@@ -86,11 +86,19 @@ const User = () => {
   totalDeposits = depositArray.reduce((init, sum) => init + sum, 0);
   totalWithdraws = withdrawArray.reduce((init, sum) => init + sum, 0);
 
-  const barData = [
+  const depositData = [
     {
       type: "bar",
       x: uniqDates,
       y: depositArray,
+    },
+  ];
+
+  const withdrawData = [
+    {
+      type: "scatter",
+      x: uniqDates,
+      y: withdrawArray,
     },
   ];
 
@@ -179,7 +187,17 @@ const User = () => {
                   <h4>Deposits</h4>
                 </CardHeader>
                 <CardBody>
-                  <PlotlyCharts data={barData} />
+                  <PlotlyCharts data={depositData} />
+                </CardBody>
+              </Card>
+            </GridItem>
+            <GridItem xs={12} sm={12} md={6}>
+              <Card chart>
+                <CardHeader color="warning">
+                  <h4>Withdraws</h4>
+                </CardHeader>
+                <CardBody>
+                  <PlotlyCharts data={withdrawData} />
                 </CardBody>
               </Card>
             </GridItem>
