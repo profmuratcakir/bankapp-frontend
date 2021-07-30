@@ -6,6 +6,7 @@ import About from "./about/About";
 import Login from "./login/Login";
 import Register from "./register/Register";
 import User from "./user/User";
+import Logout from "./logout/Logout";
 function App() {
   return (
     <div className="App">
@@ -26,6 +27,9 @@ function App() {
           </Route>
           <Route path="/user">
             <User />
+          </Route>
+          <Route path="/logout">
+            <Logout />
           </Route>
         </Switch>
         <Footer />
