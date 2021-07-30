@@ -25,6 +25,9 @@ import CardFooter from "../components/Card/CardFooter.js";
 // importing lodash
 import _ from "lodash";
 
+// Plotly.js for charts
+import PlotlyCharts from "../charts/PlotlyCharts";
+
 //Global styles
 import styles from "../styles/dashboardStyle.js";
 import { Container } from "react-bootstrap";
@@ -39,12 +42,16 @@ const User = () => {
   console.log(userInfo);
 
   let totalDeposits = 0;
-  let totalWithdraw = 0;
+  let totalWithdraws = 0;
   let depositArray = [];
   let withdrawArray = [];
 
   const transactions = userInfo.user.transactions;
+
   // Getting Unique transaction date
+  // const dates = transactions.map((tran) => tran.date);
+  // const uniqDates = new Set(dates);
+
   const uniqDates = _.uniq(_.map(transactions, "date")).sort();
 
   //For the cards
@@ -57,29 +64,35 @@ const User = () => {
 
   // Extracting Deposit, Withdraw and calculating sum of them
   uniqDates.forEach((date) => {
+    //Deposit calculation
     const deposits = transactions.filter((tran) => {
       return tran.type === "DEPOSIT" && tran.date === date;
     });
 
-    depositArray = deposits.map((item) => item.amount);
-    totalDeposits = depositArray.reduce((init, sum) => init + sum, 0);
+    const depositAmounts = deposits.map((item) => item.amount);
+    const depositSum = depositAmounts.reduce((init, sum) => init + sum, 0);
+    depositArray.push(depositSum);
+    console.log(depositArray);
 
+    //Withdraw calculation
     const withdraws = transactions.filter((tran) => {
       return tran.type === "WITHDRAW" && tran.date === date;
     });
 
-    withdrawArray = withdraws.map((item) => item.amount);
-    totalWithdraw = withdrawArray.reduce((init, sum) => init + sum, 0);
-    console.log(depositArray);
-    console.log(withdrawArray);
+    const withdrawAmount = withdraws.map((item) => item.amount);
+    const withdrawSum = withdrawAmount.reduce((init, sum) => init + sum, 0);
+    withdrawArray.push(withdrawSum);
   });
+  depositArray.totalDeposits = reduce((init, sum) => init + sum, 0);
+  totalWithdraws = withdrawArray.reduce((init, sum) => init + sum, 0);
 
-  // function calculate(type) {
-  //   return userInfo.user.transactions
-  //     .filter((t) => t.type === type)
-  //     .map((t) => t.amount)
-  //     .reduce((acc, d) => acc + d, 0);
-  // }
+  const barData = [
+    {
+      type: "bar",
+      x: uniqDates,
+      y: depositArray,
+    },
+  ];
 
   return (
     <div>
@@ -130,7 +143,7 @@ const User = () => {
                     <AccountBalanceWallet />
                   </CardIcon>
                   <p className={classes.cardCategory}>Withdraw</p>
-                  <h3 className={classes.cardTitle}>${totalWithdraw}</h3>
+                  <h3 className={classes.cardTitle}>${totalWithdraws}</h3>
                 </CardHeader>
                 <CardFooter stats>
                   <div className={classes.stats}>
@@ -155,6 +168,19 @@ const User = () => {
                     Latest
                   </div>
                 </CardFooter>
+              </Card>
+            </GridItem>
+          </GridContainer>
+
+          <GridContainer>
+            <GridItem xs={12} sm={12} md={6}>
+              <Card chart>
+                <CardHeader color="success">
+                  <h4>Deposits</h4>
+                </CardHeader>
+                <CardBody>
+                  <PlotlyCharts data={barData} />
+                </CardBody>
               </Card>
             </GridItem>
           </GridContainer>
