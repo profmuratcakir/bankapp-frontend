@@ -83,7 +83,7 @@ const User = () => {
     const withdrawSum = withdrawAmount.reduce((init, sum) => init + sum, 0);
     withdrawArray.push(withdrawSum);
   });
-  depositArray.totalDeposits = reduce((init, sum) => init + sum, 0);
+  totalDeposits = depositArray.reduce((init, sum) => init + sum, 0);
   totalWithdraws = withdrawArray.reduce((init, sum) => init + sum, 0);
 
   const barData = [
