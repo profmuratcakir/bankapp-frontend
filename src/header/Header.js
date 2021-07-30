@@ -4,7 +4,9 @@ import { Link, useHistory } from "react-router-dom";
 import "./Header.css";
 import logo from "../images/logo.png";
 import { Icon } from "semantic-ui-react";
-
+import { useStateValue } from "../StateProvider";
+import UserMenu from "../menus/UserMenu";
+import AdminMenu from "../menus/AdminMenu";
 const Header = () => {
   return (
     <div className="nav-container">
@@ -73,32 +75,39 @@ const TopNav = () => {
 };
 
 const MiddleNav = () => {
+  const [{ userInfo }, dispatch] = useStateValue();
+
   return (
     <div>
-      <Nav className="d-flex justify-content-end">
-        <Nav.Item className="me-4">
-          <Nav.Link bsPrefix="middle-navbar" as={Link} to="/login">
-            <Icon
-              name="user"
-              circular
-              size="large"
-              className="d-block mb-2"
-            ></Icon>
-            Sign In
-          </Nav.Link>
-        </Nav.Item>
-        <Nav.Item>
-          <Nav.Link bsPrefix="middle-navbar" as={Link} to="/register">
-            <Icon
-              name="unlock alternate"
-              circular
-              size="large"
-              className="d-block mb-2 ms-2"
-            ></Icon>
-            Register
-          </Nav.Link>
-        </Nav.Item>
-      </Nav>
+      {!userInfo && (
+        <Nav className="d-flex justify-content-end">
+          <Nav.Item className="me-4">
+            <Nav.Link bsPrefix="middle-navbar" as={Link} to="/login">
+              <Icon
+                name="user"
+                circular
+                size="large"
+                className="d-block mb-2"
+              ></Icon>
+              Sign In
+            </Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
+            <Nav.Link bsPrefix="middle-navbar" as={Link} to="/register">
+              <Icon
+                name="unlock alternate"
+                circular
+                size="large"
+                className="d-block mb-2 ms-2"
+              ></Icon>
+              Register
+            </Nav.Link>
+          </Nav.Item>
+        </Nav>
+      )}
+
+      {userInfo && userInfo.user && !userInfo.user.isAdmin && <UserMenu />}
+      {userInfo && userInfo.user && userInfo.user.isAdmin && <AdminMenu />}
     </div>
   );
 };

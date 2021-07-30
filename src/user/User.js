@@ -60,8 +60,6 @@ const User = () => {
     totalRecipients = userInfo.user.recipients.length;
   }
 
-  console.log(userInfo);
-
   // Extracting Deposit, Withdraw and calculating sum of them
   uniqDates.forEach((date) => {
     //Deposit calculation
@@ -72,7 +70,6 @@ const User = () => {
     const depositAmounts = deposits.map((item) => item.amount);
     const depositSum = depositAmounts.reduce((init, sum) => init + sum, 0);
     depositArray.push(depositSum);
-    console.log(depositArray);
 
     //Withdraw calculation
     const withdraws = transactions.filter((tran) => {
