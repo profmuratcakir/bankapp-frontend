@@ -43,7 +43,7 @@ const UserMenu = () => {
   };
 
   return (
-    <div>
+    <div className="d-flex justify-content-end">
       <Button
         aria-controls="simple-menu"
         aria-haspopup="true"
