@@ -35,6 +35,9 @@ function App() {
           <Route path="/deposit">
             <Deposit />
           </Route>
+          <Route path="/deposit">
+            <Deposit />
+          </Route>
         </Switch>
         <Footer />
       </Router>
