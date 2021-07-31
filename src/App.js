@@ -7,6 +7,7 @@ import Login from "./login/Login";
 import Register from "./register/Register";
 import User from "./user/User";
 import Logout from "./logout/Logout";
+import Deposit from "./deposit/Deposit";
 function App() {
   return (
     <div className="App">
@@ -30,6 +31,9 @@ function App() {
           </Route>
           <Route path="/logout">
             <Logout />
+          </Route>
+          <Route path="/deposit">
+            <Deposit />
           </Route>
         </Switch>
         <Footer />

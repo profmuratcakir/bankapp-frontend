@@ -25,7 +25,10 @@ const AdminMenu = () => {
     setAnchorEl(null);
   };
 
-  const showUserMgmt = () => {};
+  const showUserMgmt = () => {
+    history.push("./userMgmt");
+    setAnchorEl(null);
+  };
 
   return (
     <div className="d-flex justify-content-end">
