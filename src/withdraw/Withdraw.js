@@ -16,10 +16,10 @@ import styles from "../styles/dashboardStyle.js";
 
 const useStyles = makeStyles(styles);
 
-const DepositForm = (props) => (
+const WithdrawForm = (props) => (
   <Container className="d-flex justify-content-center">
     <fieldset>
-      <legend>Deposit</legend>
+      <legend>Withraw</legend>
       <Form>
         <Row className="justify-content-center">
           <Col sm={12} md={6} className="text-center p-3">
@@ -61,11 +61,10 @@ const DepositForm = (props) => (
   </Container>
 );
 
-const Deposit = () => {
+const Withdraw = () => {
   const history = useHistory();
   const [{ userInfo }, dispatch] = useStateValue();
   const classes = useStyles();
-  console.log(userInfo);
 
   return (
     <Container>
@@ -81,10 +80,10 @@ const Deposit = () => {
             })}
             onSubmit={(values, actions) => {
               service
-                .deposit(values)
+                .withdraw(values)
                 .then((res) => {
                   if (res.status === 200) {
-                    toast.success("Amount Successfuly Deposited ", {
+                    toast.success("Amount Successfuly Withrawed ", {
                       position: toast.POSITION.TOP_CENTER,
                     });
                     const userInfo = res.data;
@@ -99,12 +98,12 @@ const Deposit = () => {
                 .catch(() => {
                   actions.setSubmitting(false);
                   actions.resetForm();
-                  toast.error("Amount Denied", {
+                  toast.error("Withdraw Denied", {
                     position: toast.POSITION.TOP_CENTER,
                   });
                 });
             }}
-            component={DepositForm}
+            component={WithdrawForm}
           ></Formik>
           <Divider />
           <h2 className={classes.infoText}>Transactions</h2>
@@ -115,4 +114,4 @@ const Deposit = () => {
   );
 };
 
-export default Deposit;
+export default Withdraw;
