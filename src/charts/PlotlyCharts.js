@@ -11,7 +11,7 @@ const PlotlyCharts = ({ data }) => {
         showlegend: false,
         margin: { t: 5, l: 40 },
       }}
-      config={{ responsive: true, displayModeBar: false }}
+      config={{ responsive: true, displayModeBar: true }}
     />
   );
 };

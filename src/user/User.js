@@ -22,9 +22,6 @@ import CardHeader from "../components/Card/CardHeader.js";
 import CardIcon from "../components/Card/CardIcon.js";
 import CardFooter from "../components/Card/CardFooter.js";
 
-// importing lodash
-import _ from "lodash";
-
 // Plotly.js for charts
 import PlotlyCharts from "../charts/PlotlyCharts";
 
@@ -45,14 +42,16 @@ const User = () => {
   let totalWithdraws = 0;
   let depositArray = [];
   let withdrawArray = [];
+  let transferArray = [];
 
-  const transactions = userInfo.user.transactions;
+  let transactions = [];
+  if (userInfo?.user?.transactions) {
+    transactions = userInfo.user.transactions;
+  }
 
   // Getting Unique transaction date
-  // const dates = transactions.map((tran) => tran.date);
-  // const uniqDates = new Set(dates);
-
-  const uniqDates = _.uniq(_.map(transactions, "date")).sort();
+  const dates = transactions.map((tran) => tran.date);
+  const uniqDates = [...new Set(dates)];
 
   //For the cards
   let totalRecipients = 0;
@@ -79,7 +78,17 @@ const User = () => {
     const withdrawAmount = withdraws.map((item) => item.amount);
     const withdrawSum = withdrawAmount.reduce((init, sum) => init + sum, 0);
     withdrawArray.push(withdrawSum);
+
+    //Transfer calculation
+    const tranfers = transactions.filter((tran) => {
+      return tran.type === "TRANSFER" && tran.date === date;
+    });
+
+    const transferAmount = tranfers.map((item) => item.amount);
+    const transferSum = transferAmount.reduce((init, sum) => init + sum, 0);
+    transferArray.push(transferSum);
   });
+
   totalDeposits = depositArray.reduce((init, sum) => init + sum, 0);
   totalWithdraws = withdrawArray.reduce((init, sum) => init + sum, 0);
 
@@ -96,6 +105,14 @@ const User = () => {
       type: "scatter",
       x: uniqDates,
       y: withdrawArray,
+    },
+  ];
+
+  const transferData = [
+    {
+      type: "scatter",
+      x: uniqDates,
+      y: transferArray,
     },
   ];
 
@@ -178,7 +195,7 @@ const User = () => {
           </GridContainer>
 
           <GridContainer>
-            <GridItem xs={12} sm={12} md={6}>
+            <GridItem xs={12} sm={12} md={4}>
               <Card chart>
                 <CardHeader color="success">
                   <h4>Deposits</h4>
@@ -188,13 +205,24 @@ const User = () => {
                 </CardBody>
               </Card>
             </GridItem>
-            <GridItem xs={12} sm={12} md={6}>
+            <GridItem xs={12} sm={12} md={4}>
               <Card chart>
                 <CardHeader color="warning">
                   <h4>Withdraws</h4>
                 </CardHeader>
                 <CardBody>
                   <PlotlyCharts data={withdrawData} />
+                </CardBody>
+              </Card>
+            </GridItem>
+
+            <GridItem xs={12} sm={12} md={4}>
+              <Card chart>
+                <CardHeader color="info">
+                  <h4>Transfer</h4>
+                </CardHeader>
+                <CardBody>
+                  <PlotlyCharts data={transferData} />
                 </CardBody>
               </Card>
             </GridItem>
