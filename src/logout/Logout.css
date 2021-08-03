@@ -1,0 +1,11 @@
+button:hover {
+  opacity: 0.5;
+}
+
+.container {
+  padding: 30px 30px 30px 30px;
+}
+
+.logout__btn {
+  margin: 10px !important;
+}

@@ -30,5 +30,9 @@ class BankService {
   getAllUsers() {
     return axiosInstance.get(BASE_URL + "/user/all");
   }
+
+  deleteUser(id) {
+    return axiosInstance.delete(BASE_URL + "/user/delete/" + id);
+  }
 }
 export default new BankService();

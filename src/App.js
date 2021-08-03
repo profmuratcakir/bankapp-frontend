@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import React, { useEffect } from "react";
 import Header from "./header/Header";
 import Home from "./home/Home";
 import Footer from "./footer/Footer";
@@ -9,8 +10,14 @@ import User from "./user/User";
 import Logout from "./logout/Logout";
 import Deposit from "./deposit/Deposit";
 import Withdraw from "./withdraw/Withdraw";
+import AddRecipient from "./transfer/AddRecipient";
+import Transfer from "./transfer/Transfer";
 
 function App() {
+  useEffect(() => {
+    localStorage.removeItem("auth");
+  }, []);
+
   return (
     <div className="App">
       <Router>
@@ -39,6 +46,12 @@ function App() {
           </Route>
           <Route path="/withdraw">
             <Withdraw />
+          </Route>
+          <Route path="/recipient">
+            <AddRecipient />
+          </Route>
+          <Route path="/transfer">
+            <Transfer />
           </Route>
         </Switch>
         <Footer />

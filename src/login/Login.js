@@ -34,6 +34,7 @@ const LoginForm = (props) => (
               component={TextField}
               name="password"
               type="password"
+              autoComplete="on"
             />
           </Col>
           {props.isSubmitting && <LinearProgress />}
@@ -73,6 +74,7 @@ const Login = () => {
             .required("Password Required"),
         })}
         onSubmit={(values, actions) => {
+          // localStorage.clear("auth");
           service
             .login(values)
             .then((res) => {
