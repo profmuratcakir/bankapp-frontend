@@ -12,12 +12,9 @@ import Deposit from "./deposit/Deposit";
 import Withdraw from "./withdraw/Withdraw";
 import AddRecipient from "./transfer/AddRecipient";
 import Transfer from "./transfer/Transfer";
-
+import Admin from "./admin/Admin";
+import UserMgmt from "./admin/UserMgmt";
 function App() {
-  useEffect(() => {
-    localStorage.removeItem("auth");
-  }, []);
-
   return (
     <div className="App">
       <Router>
@@ -37,6 +34,12 @@ function App() {
           </Route>
           <Route path="/user">
             <User />
+          </Route>
+          <Route path="/admin">
+            <Admin />
+          </Route>
+          <Route path="/userMgmt">
+            <UserMgmt />
           </Route>
           <Route path="/logout">
             <Logout />

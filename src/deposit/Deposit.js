@@ -76,7 +76,7 @@ const Deposit = () => {
           <Formik
             initialValues={{ amount: "", comment: "" }}
             validationSchema={Yup.object({
-              amount: Yup.string().required("amount Required"),
+              amount: Yup.number().positive().required("amount Required"),
               comment: Yup.string().required("Comment Required"),
             })}
             onSubmit={(values, actions) => {

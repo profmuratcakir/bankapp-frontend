@@ -96,7 +96,7 @@ const Transfer = () => {
           <Formik
             initialValues={{ amount: "", recipientName: "" }}
             validationSchema={Yup.object({
-              amount: Yup.string().required("amount Required"),
+              amount: Yup.number().positive().required("Amount Required"),
               recipientName: Yup.string().required("Name Required"),
             })}
             onSubmit={(values, actions) => {

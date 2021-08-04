@@ -75,7 +75,7 @@ const Withdraw = () => {
           <Formik
             initialValues={{ amount: "", comment: "" }}
             validationSchema={Yup.object({
-              amount: Yup.string().required("amount Required"),
+              amount: Yup.number().positive().required("Amount Required"),
               comment: Yup.string().required("Comment Required"),
             })}
             onSubmit={(values, actions) => {
