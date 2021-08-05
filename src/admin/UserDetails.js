@@ -8,7 +8,7 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import TablePagination from "@material-ui/core/TablePagination";
 import Paper from "@material-ui/core/Paper";
-import { useStateValue } from "../StateProvider";
+
 import { Container } from "react-bootstrap";
 import DeleteIcon from "@material-ui/icons/Delete";
 import bankService from "../service/BankService";
@@ -29,7 +29,6 @@ const columns = [
 ];
 
 const UserDetails = (props) => {
-  const [{ userInfo }] = useStateValue();
   rows = props.users;
   const history = useHistory();
   const classes = useStyles();
@@ -48,7 +47,7 @@ const UserDetails = (props) => {
   const deleteStyle = { cursor: "pointer", color: "red" };
   const handleDelete = (userId) => {
     bankService.deleteUser(userId).then((res) => {
-      if (res.status == 200) {
+      if (res.status === 200) {
         toast.success("User Successfuly deleted", {
           position: toast.POSITION.TOP_CENTER,
         });

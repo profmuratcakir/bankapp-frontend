@@ -1,6 +1,7 @@
 {
   "name": "bank-app",
   "version": "0.1.0",
+  "homepage": "http://www.htrbank.com",
   "private": true,
   "dependencies": {
     "@material-ui/core": "4.11.2",

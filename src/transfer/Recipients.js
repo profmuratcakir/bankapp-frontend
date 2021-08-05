@@ -8,7 +8,7 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import TablePagination from "@material-ui/core/TablePagination";
 import Paper from "@material-ui/core/Paper";
-import Divider from "@material-ui/core/Divider";
+
 import { useStateValue } from "../StateProvider";
 
 const useStyles = makeStyles({

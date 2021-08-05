@@ -75,7 +75,7 @@ const TopNav = () => {
 };
 
 const MiddleNav = () => {
-  const [{ userInfo }, dispatch] = useStateValue();
+  const [{ userInfo }] = useStateValue();
 
   return (
     <div>

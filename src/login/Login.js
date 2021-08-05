@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Formik, Field, Form } from "formik";
 import * as Yup from "yup";
 import { toast } from "react-toastify";
@@ -60,6 +60,10 @@ const LoginForm = (props) => (
 const Login = () => {
   const history = useHistory();
   const [{ userInfo }, dispatch] = useStateValue();
+
+  useEffect(() => {
+    localStorage.clear("auth");
+  }, []);
   return (
     <div>
       <Formik
@@ -74,7 +78,6 @@ const Login = () => {
             .required("Password Required"),
         })}
         onSubmit={(values, actions) => {
-          // localStorage.clear("auth");
           service
             .login(values)
             .then((res) => {

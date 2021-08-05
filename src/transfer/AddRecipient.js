@@ -3,7 +3,7 @@ import { Formik, Field, Form } from "formik";
 import * as Yup from "yup";
 import { toast } from "react-toastify";
 import { Container, Row, Col } from "react-bootstrap";
-import { Button, LinearProgress } from "@material-ui/core";
+import { Button } from "@material-ui/core";
 import { TextField } from "formik-material-ui";
 import "react-toastify/dist/ReactToastify.css";
 import service from "../service/BankService";
