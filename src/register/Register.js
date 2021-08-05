@@ -160,7 +160,7 @@ const Register = () => {
               }
             })
             .catch(() => {
-              toast.error(res.data.message, {
+              toast.error("Register Denied", {
                 position: toast.POSITION.TOP_CENTER,
               });
               actions.resetForm();

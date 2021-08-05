@@ -81,7 +81,7 @@ const MiddleNav = () => {
     <div>
       {!userInfo && (
         <Nav className="d-flex justify-content-end">
-          <Nav.Item className="me-4">
+          <Nav.Item className="me-3">
             <Nav.Link bsPrefix="middle-navbar" as={Link} to="/login">
               <Icon
                 name="user"
