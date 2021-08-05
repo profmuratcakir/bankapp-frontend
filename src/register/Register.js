@@ -5,7 +5,6 @@ import { toast } from "react-toastify";
 import { Container, Row, Col } from "react-bootstrap";
 import { Button, LinearProgress } from "@material-ui/core";
 import { TextField } from "formik-material-ui";
-import "react-toastify/dist/ReactToastify.css";
 import service from "../service/BankService";
 
 const RegisterSchema = Yup.object().shape({
@@ -149,19 +148,24 @@ const Register = () => {
         }}
         validationSchema={RegisterSchema}
         onSubmit={(values, actions) => {
-          service.register(values).then((res) => {
-            if (res.status === 200) {
-              toast.success("Register Successful", {
-                position: toast.POSITION.TOP_CENTER,
-              });
-              actions.resetForm();
-            } else {
+          service
+            .register(values)
+            .then((res) => {
+              if (res.status === 200) {
+                toast.success("Register Successful", {
+                  position: toast.POSITION.TOP_CENTER,
+                });
+                actions.resetForm();
+                actions.setSubmitting(false);
+              }
+            })
+            .catch(() => {
               toast.error(res.data.message, {
                 position: toast.POSITION.TOP_CENTER,
               });
-            }
-            actions.setSubmitting(false);
-          });
+              actions.resetForm();
+              actions.setSubmitting(false);
+            });
         }}
         component={RegistrationForm}
       ></Formik>
