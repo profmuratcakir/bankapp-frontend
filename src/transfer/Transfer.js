@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Formik, Field, Form } from "formik";
 import * as Yup from "yup";
 import { toast } from "react-toastify";
@@ -21,63 +21,71 @@ const useStyles = makeStyles(styles);
 let classes;
 let recipients = "";
 
-const TransferForm = (props) => (
-  <Container className="d-flex justify-content-center">
-    <fieldset>
-      <legend>Transfer</legend>
-      <Form>
-        <Row>
-          <Col
-            xs={12}
-            md={6}
-            className="d-flex justify-content-center text-center p-3"
-          >
-            <Autocomplete
-              className={classes.formControl}
-              name="recipientName"
-              options={recipients}
-              getOptionLabel={(option) => option.name}
-              style={{ width: 200 }}
-              onChange={(e, value) => {
-                props.setFieldValue(
-                  "recipientName",
-                  value !== null ? value.name : ""
-                );
-              }}
-              renderInput={(params) => (
-                <TextField label="Recipient" name="recipientName" {...params} />
-              )}
-            />
-          </Col>
-          <Col xs={12} md={6} className="text-center p-3">
-            <Field
-              className="ms-4"
-              component={FormikTextField}
-              name="amount"
-              type="number"
-              label="amount"
-            />
-          </Col>
-
-          {props.isSubmitting && <LinearProgress />}
-        </Row>
-        <Row className="mt-4 ">
-          <Col className="d-flex justify-content-center p-3">
-            <Button
-              type="submit"
-              onClick={props.submitForm}
-              disabled={props.isSubmitting}
-              variant="contained"
-              color="secondary"
+const TransferForm = (props) => {
+  const [value, setValue] = useState("");
+  return (
+    <Container className="d-flex justify-content-center">
+      <fieldset>
+        <legend>Transfer</legend>
+        <Form>
+          <Row>
+            <Col
+              xs={12}
+              md={6}
+              className="d-flex justify-content-center text-center p-3"
             >
-              Submit
-            </Button>
-          </Col>
-        </Row>
-      </Form>
-    </fieldset>
-  </Container>
-);
+              <Autocomplete
+                className={classes.formControl}
+                name="recipientName"
+                options={recipients}
+                getOptionLabel={(option) => option.name}
+                style={{ width: 200 }}
+                value={value}
+                onChange={(e, value) => {
+                  props.setFieldValue(
+                    "recipientName",
+                    value !== null ? value.name : ""
+                  );
+                }}
+                renderInput={(params) => (
+                  <TextField
+                    label="Recipient"
+                    name="recipientName"
+                    {...params}
+                  />
+                )}
+              />
+            </Col>
+            <Col xs={12} md={6} className="text-center p-3">
+              <Field
+                className="ms-4"
+                component={FormikTextField}
+                name="amount"
+                type="number"
+                label="amount"
+              />
+            </Col>
+
+            {props.isSubmitting && <LinearProgress />}
+          </Row>
+          <Row className="mt-4 ">
+            <Col className="d-flex justify-content-center p-3">
+              <Button
+                type="submit"
+                onClick={props.submitForm}
+                disabled={props.isSubmitting}
+                variant="contained"
+                color="secondary"
+              >
+                Submit
+              </Button>
+            </Col>
+          </Row>
+        </Form>
+      </fieldset>
+    </Container>
+  );
+};
 
 const Transfer = () => {
   const history = useHistory();
