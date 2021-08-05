@@ -82,11 +82,11 @@ const RegistrationForm = (props) => (
             <Row>
               <Col>
                 <label className="p3">
-                  <Field type="checkbox" name="role" value="user" />
+                  <Field type="checkbox" name="role" value="USER" />
                   User
                 </label>
                 <label className="p3 ms-4">
-                  <Field type="checkbox" name="role" value="admin" />
+                  <Field type="checkbox" name="role" value="ADMIN" />
                   Admin
                 </label>
               </Col>
@@ -142,7 +142,7 @@ const Register = () => {
           dob: "",
           email: "",
           username: "",
-          role: ["user"],
+          role: ["USER"],
           password: "",
           confirmPassword: "",
         }}
