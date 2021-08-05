@@ -37,7 +37,6 @@ const LoginForm = (props) => (
               autoComplete="on"
             />
           </Col>
-          {props.isSubmitting && <LinearProgress />}
         </Row>
         <Row className="mt-4 ">
           <Col className="d-flex justify-content-center p-3">
@@ -51,6 +50,7 @@ const LoginForm = (props) => (
               Submit
             </Button>
           </Col>
+          {props.isSubmitting && <LinearProgress />}
         </Row>
       </Form>
     </fieldset>
