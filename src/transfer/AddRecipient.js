@@ -5,7 +5,6 @@ import { toast } from "react-toastify";
 import { Container, Row, Col } from "react-bootstrap";
 import { Button } from "@material-ui/core";
 import { TextField } from "formik-material-ui";
-import "react-toastify/dist/ReactToastify.css";
 import service from "../service/BankService";
 import { useStateValue } from "../StateProvider";
 import { useHistory } from "react-router";

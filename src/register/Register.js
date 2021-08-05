@@ -1,7 +1,7 @@
 import React from "react";
 import { Formik, Field, Form } from "formik";
 import * as Yup from "yup";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 import { Container, Row, Col } from "react-bootstrap";
 import { Button, LinearProgress } from "@material-ui/core";
 import { TextField } from "formik-material-ui";
@@ -165,7 +165,6 @@ const Register = () => {
         }}
         component={RegistrationForm}
       ></Formik>
-      <ToastContainer />
     </div>
   );
 };
