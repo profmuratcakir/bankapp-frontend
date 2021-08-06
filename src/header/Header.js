@@ -11,7 +11,7 @@ const Header = () => {
   return (
     <div className="nav-container">
       <Container fluid className="nav-top-fluid">
-        <Container className="nav-top">
+        <Container className="nav-top pt-1 pb-0">
           <Row>
             <Col className="d-none d-md-block">
               <TopNav />
@@ -20,7 +20,7 @@ const Header = () => {
         </Container>
       </Container>
 
-      <Container className="nav-middle">
+      <Container className="nav-middle py-3">
         <Row>
           <Col>
             <Link to="/">
@@ -33,7 +33,7 @@ const Header = () => {
         </Row>
       </Container>
 
-      <Container>
+      <Container className="py-1">
         <Row>
           <Col>
             <NavBottom />

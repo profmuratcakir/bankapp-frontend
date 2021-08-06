@@ -1,15 +1,21 @@
+.carousel-indicators button {
+  border-radius: 300px;
+}
+
 .carousel-inner {
   max-height: 400px;
 }
 
-.carousel-caption {
+.carousel-inner > .item {
   position: relative;
-  top: 30%;
-  transform: translateY(50%);
-  transform: translateX(-15%);
+  max-height: 600px;
+}
+.carousel-caption {
+  top: 28%;
+  transform: translateX(-20%);
 }
 
 .carousel-desc-text {
-  font-size: calc(0.9vw + 10px);
+  font-size: calc(0.9vw + 8px);
   text-align: center;
 }

@@ -22,7 +22,6 @@ let classes;
 let recipients = "";
 
 const TransferForm = (props) => {
-  const [value, setValue] = useState("");
   return (
     <Container className="d-flex justify-content-center">
       <fieldset>
@@ -38,13 +37,16 @@ const TransferForm = (props) => {
                 className={classes.formControl}
                 name="recipientName"
                 options={recipients}
-                getOptionLabel={(option) => option.name}
+                getOptionSelected={(option, value) =>
+                  option.name === value.name
+                }
+                getOptionLabel={(recipient) => recipient.name}
                 style={{ width: 200 }}
-                value={value}
-                onChange={(e, value) => {
+                onChange={(event, value) => {
                   props.setFieldValue(
                     "recipientName",
-                    value !== null ? value.name : ""
+                    value !== null ? value.name : "",
+                    true
                   );
                 }}
                 renderInput={(params) => (
@@ -120,13 +122,15 @@ const Transfer = () => {
                       type: "UPDATE",
                       item: userInfo,
                     });
+
+                    // actions.setSubmitting(false);
                     actions.resetForm();
-                    actions.setSubmitting(false);
                   }
                 })
-                .catch(() => {
+                .catch((e) => {
                   actions.setSubmitting(false);
                   actions.resetForm();
+                  console.log(e);
                   toast.error("Transfer Denied", {
                     position: toast.POSITION.TOP_CENTER,
                   });

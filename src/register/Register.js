@@ -110,7 +110,6 @@ const RegistrationForm = (props) => (
               label="Confirm Password"
               name="confirmPassword"
             />
-            {props.isSubmitting && <LinearProgress />}
           </Col>
         </Row>
 
@@ -128,6 +127,7 @@ const RegistrationForm = (props) => (
           </Col>
         </Row>
       </Form>
+      {props.isSubmitting && <LinearProgress />}
     </fieldset>
   </Container>
 );
