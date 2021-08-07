@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import React from "react";
 import Header from "./header/Header";
 import Home from "./home/Home";
-import Footer1 from "./footer/Footer1";
+import Footer from "./footer/Footer";
 import About from "./about/About";
 import Login from "./login/Login";
 import Register from "./register/Register";
@@ -65,7 +65,7 @@ function App() {
             <Transfer />
           </Route>
         </Switch>
-        <Footer1 />
+        <Footer />
       </Router>
     </div>
   );

@@ -1,73 +1,124 @@
 import React from "react";
-import { Row, Col } from "react-bootstrap";
-import { Link } from "react-router-dom";
-import "./Footer.css";
 import logo from "../images/logo.png";
+import { HashLink } from "react-router-hash-link";
 
 const Footer = () => {
   return (
-    <footer className="footer">
-      <Col sm={6} md={4} className="footer-left">
-        <Row>
-          <p className="about">
-            <span> BANK OF ANATOLIA</span> Ut congue augue non tellus bibendum,
-            in varius tellus condimentum. In scelerisque nibh tortor, sed
-            rhoncus odio condimentum in. Sed sed est ut sapien ultrices
-            eleifend. Integer tellus est, vehicula eu lectus tincidunt,
-            ultricies feugiat leo. Suspendisse tellus elit, pharetra in
-            hendrerit ut, aliquam quis augue. Nam ut nibh mollis, tristique ante
-            sed, viverra massa.
-          </p>
-        </Row>
+    <footer
+      className="text-center text-lg-start text-white"
+      style={{ backgroundColor: "#414141" }}
+    >
+      <div className="container p-4 pb-0">
+        <section className="">
+          <div className="row">
+            <div className="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+              <img src={logo} alt="logo" style={{ height: "80px" }} />
+              <p>
+                Historical Banking Experience with modern technogical trends
+              </p>
+            </div>
 
-        <Row className="icons">
-          <Link to="/">
-            <i className="fa fa-facebook"></i>
-          </Link>
-          <Link to="/">
-            <i className="fa fa-twitter"></i>
-          </Link>
-          <Link to="/">
-            <i className="fa fa-linkedin"></i>
-          </Link>
-          <Link to="/">
-            <i className="fa fa-google-plus"></i>
-          </Link>
-          <Link to="/">
-            <i className="fa fa-instagram"></i>
-          </Link>
-        </Row>
-      </Col>
+            <hr className="w-100 clearfix d-md-none" />
 
-      <Col sm={6} md={4} className="footer-center">
-        <div>
-          <i className="fa fa-map-marker"></i>
-          <p>
-            <span>Stret name and number</span> City, Country
-          </p>
-        </div>
-        <div>
-          <i className="fa fa-phone"></i>
-          <p> (+00) 0000 000 000</p>
-        </div>
-        <div>
-          <i className="fa fa-envelope"></i>
-          <p> email@bankofanatoli.com</p>
-        </div>
-      </Col>
+            <div className="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+              <h6 className="text-uppercase mb-4 font-weight-bold">LINKS</h6>
+              <p>
+                <HashLink to="/#top" className="text-white">
+                  Home
+                </HashLink>
+              </p>
+              <p>
+                <HashLink to="/#about" className="text-white">
+                  About
+                </HashLink>
+              </p>
+              <p>
+                <HashLink to="/product/#top" className="text-white">
+                  Product
+                </HashLink>
+              </p>
+              <p>
+                <HashLink to="/price/#top" className="text-white">
+                  Price
+                </HashLink>
+              </p>
+            </div>
 
-      <Col sm={6} md={4} className="footer-right">
-        <img src={logo} alt="logo" style={{ height: "100px" }} />
+            <hr className="w-100 clearfix d-md-none" />
+            <hr className="w-100 clearfix d-md-none" />
 
-        <p className="menu">
-          <Link to="/">Home</Link> | <Link to="/about">About</Link> |
-          <Link to="/about">Package</Link> | <Link to="/about">Location</Link> |
-          <Link to="/about">Contact</Link>
-        </p>
+            <div className="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+              <h6 className="text-uppercase mb-4 font-weight-bold">Contact</h6>
+              <p>
+                <i className="fa fa-home mr-3"></i> New York, NY 10012, US
+              </p>
+              <p>
+                <i className="fa fa-envelope mr-3"></i> info@bankofanatolia.com
+              </p>
+              <p>
+                <i className="fa fa-phone mr-3"></i> + 01 234 567 88
+              </p>
+              <p>
+                <i className="fa fa-print mr-3"></i> + 01 234 567 89
+              </p>
+            </div>
 
-        <p className="name"> Bank of Anatolia &copy; 2021</p>
-      </Col>
+            <div className="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
+              <h6 className="text-uppercase mb-4 font-weight-bold">
+                Follow us
+              </h6>
+
+              <a
+                className="btn btn-primary btn-floating m-1"
+                style={{ backgroundColor: "#3b5998" }}
+                role="button"
+                href="https://www.facebook.com"
+              >
+                <i className="fa fa-facebook-f"></i>
+              </a>
+
+              <a
+                className="btn btn-primary btn-floating m-1"
+                style={{ backgroundColor: "#55acee" }}
+                role="button"
+                href="https://www.twitter.com"
+              >
+                <i className="fa fa-twitter"></i>
+              </a>
+
+              <a
+                className="btn btn-primary btn-floating m-1"
+                style={{ backgroundColor: "#dd4b39" }}
+                role="button"
+                href="https://www.google.com"
+              >
+                <i className="fa fa-google"></i>
+              </a>
+
+              <a
+                className="btn btn-primary btn-floating m-1"
+                style={{ backgroundColor: "#ac2bac" }}
+                role="button"
+                href="https://www.instagram.com"
+              >
+                <i className="fa fa-instagram"></i>
+              </a>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <div
+        className="text-center p-3"
+        style={{ backgroundColor: "rgba(0, 0, 0, 0.2)" }}
+      >
+        © 2021 Copyright:
+        <a className="text-white" href="https://htrbank.com/">
+          BankofAnatolia.com
+        </a>
+      </div>
     </footer>
   );
 };
+
 export default Footer;
