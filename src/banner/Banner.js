@@ -30,7 +30,7 @@ const Banner = () => {
     },
   ];
   return (
-    <Carousel nextLabel="" prevLabel="">
+    <Carousel id="top" nextLabel="" prevLabel="">
       {images.map((data) => {
         const { id, image, btnLabel, description, interval } = data;
         return (
