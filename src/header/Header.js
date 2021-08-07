@@ -7,6 +7,7 @@ import { Icon } from "semantic-ui-react";
 import { useStateValue } from "../StateProvider";
 import UserMenu from "../menus/UserMenu";
 import AdminMenu from "../menus/AdminMenu";
+
 const Header = () => {
   return (
     <div className="nav-container">
@@ -52,16 +53,12 @@ const TopNav = () => {
 
   return (
     <div>
-      <Nav
-        variant="tabs"
-        defaultActiveKey="advantage"
-        onSelect={handleNavClick}
-      >
+      <Nav variant="tabs" defaultActiveKey="cards" onSelect={handleNavClick}>
         <Nav.Item>
-          <Nav.Link eventKey="advantage">Advantage</Nav.Link>
+          <Nav.Link eventKey="product">Products</Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link eventKey="mobile">Mobile</Nav.Link>
+          <Nav.Link eventKey="price">Prices</Nav.Link>
         </Nav.Item>
         <Nav.Item>
           <Nav.Link eventKey="signin">Sign In</Nav.Link>
@@ -136,9 +133,7 @@ const NavBottom = () => {
           <Nav.Link className="nav-bottom-links" eventKey="about">
             About
           </Nav.Link>
-          <Nav.Link className="nav-bottom-links" eventKey="package">
-            Package
-          </Nav.Link>
+
           <Nav.Link className="nav-bottom-links" eventKey="location">
             Location
           </Nav.Link>

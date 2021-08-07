@@ -61,9 +61,9 @@ const Login = () => {
   const history = useHistory();
   const [{ userInfo }, dispatch] = useStateValue();
 
-  useEffect(() => {
-    localStorage.clear("auth");
-  }, []);
+  // useEffect(() => {
+  //   localStorage.clear("auth");
+  // }, []);
   return (
     <div>
       <Formik
@@ -81,6 +81,7 @@ const Login = () => {
           service
             .login(values)
             .then((res) => {
+              localStorage.removeItem("auth");
               if (res.status === 200) {
                 toast.success("Login Successful", {
                   position: toast.POSITION.TOP_CENTER,

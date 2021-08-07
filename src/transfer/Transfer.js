@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Formik, Field, Form } from "formik";
 import * as Yup from "yup";
 import { toast } from "react-toastify";
@@ -14,7 +14,7 @@ import Transactions from "../account/Transactions";
 import Divider from "@material-ui/core/Divider";
 import { makeStyles } from "@material-ui/core";
 import styles from "../styles/dashboardStyle.js";
-import { Autocomplete } from "@material-ui/lab";
+import Autocomplete from "@material-ui/lab/Autocomplete";
 
 const useStyles = makeStyles(styles);
 
@@ -22,6 +22,7 @@ let classes;
 let recipients = "";
 
 const TransferForm = (props) => {
+  console.log(props);
   return (
     <Container className="d-flex justify-content-center">
       <fieldset>
@@ -34,21 +35,18 @@ const TransferForm = (props) => {
               className="d-flex justify-content-center text-center p-3"
             >
               <Autocomplete
+                options={recipients}
+                getOptionLabel={(option) => option.name}
                 className={classes.formControl}
                 name="recipientName"
-                options={recipients}
                 getOptionSelected={(option, value) =>
                   option.name === value.name
                 }
-                getOptionLabel={(recipient) => recipient.name}
                 style={{ width: 200 }}
-                onChange={(event, value) => {
-                  props.setFieldValue(
-                    "recipientName",
-                    value !== null ? value.name : "",
-                    true
-                  );
+                onChange={(event, value, clear) => {
+                  props.setFieldValue("recipientName", value?.name || "");
                 }}
+                onOpen={props.setTouched}
                 renderInput={(params) => (
                   <TextField
                     label="Recipient"
@@ -123,7 +121,7 @@ const Transfer = () => {
                       item: userInfo,
                     });
 
-                    // actions.setSubmitting(false);
+                    actions.setSubmitting(false);
                     actions.resetForm();
                   }
                 })

@@ -58,9 +58,9 @@ const priceData = [
 ];
 const Price = () => {
   return (
-    <Container className="mt-1 mb-4">
+    <Container id="top" className="mt-1 mb-2">
       <Row>
-        <p className="h2 fw-bold text-center my-xs-3 my-md-5">Price</p>
+        <p className="h2 fw-bold text-center ">Price</p>
         <p className="h3 text-center my-xs-3 my-md-5 text-black-50">
           The right banking package for you.Get the privilege of choose between
           our many banking Packages 'and enjory services that will reward you

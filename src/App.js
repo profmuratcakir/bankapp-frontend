@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import React from "react";
 import Header from "./header/Header";
 import Home from "./home/Home";
-import Footer from "./footer/Footer";
+import Footer1 from "./footer/Footer1";
 import About from "./about/About";
 import Login from "./login/Login";
 import Register from "./register/Register";
@@ -14,7 +14,8 @@ import AddRecipient from "./transfer/AddRecipient";
 import Transfer from "./transfer/Transfer";
 import Admin from "./admin/Admin";
 import UserMgmt from "./admin/UserMgmt";
-
+import Product from "./product/Product";
+import Price from "./price/Price";
 function App() {
   return (
     <div className="App">
@@ -26,6 +27,12 @@ function App() {
           </Route>
           <Route path="/about">
             <About />
+          </Route>
+          <Route path="/product">
+            <Product />
+          </Route>
+          <Route path="/price">
+            <Price />
           </Route>
           <Route path="/login">
             <Login />
@@ -58,7 +65,7 @@ function App() {
             <Transfer />
           </Route>
         </Switch>
-        <Footer />
+        <Footer1 />
       </Router>
     </div>
   );

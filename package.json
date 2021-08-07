@@ -4,9 +4,9 @@
   "homepage": "http://www.htrbank.com",
   "private": true,
   "dependencies": {
-    "@material-ui/core": "4.11.2",
+    "@material-ui/core": "^4.11.2",
     "@material-ui/icons": "^4.11.2",
-    "@material-ui/lab": "^4.0.0-alpha.57",
+    "@material-ui/lab": "^4.0.0-alpha.60",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
@@ -25,6 +25,7 @@
     "react-toastify": "^7.0.4",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^2.0.3",
+    "react-router-hash-link": "^2.4.3",
     "web-vitals": "^1.1.2",
     "yup": "^0.32.9"
   },
