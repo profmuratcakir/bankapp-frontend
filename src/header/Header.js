@@ -61,7 +61,7 @@ const TopNav = () => {
           <Nav.Link eventKey="price">Prices</Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link eventKey="signin">Sign In</Nav.Link>
+          <Nav.Link eventKey="login">Sign In</Nav.Link>
         </Nav.Item>
         <Nav.Item>
           <Nav.Link eventKey="register">Register</Nav.Link>
