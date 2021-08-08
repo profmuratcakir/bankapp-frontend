@@ -36,8 +36,6 @@ const User = () => {
   const [{ userInfo }] = useStateValue();
   const history = useHistory();
 
-  console.log(userInfo);
-
   let totalDeposits = 0;
   let totalWithdraws = 0;
   let depositArray = [];
